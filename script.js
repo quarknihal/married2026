@@ -3,19 +3,33 @@ window.addEventListener("load", function () {
     const video = document.querySelector(".vid");
     const loader = document.querySelector("#loader");
 
-    video.addEventListener("canplaythrough", function () {
+    let videoReady = false;
+    let pageReady = false;
 
-        document.body.style.visibility = "visible";
+    function hideLoader() {
+        if (videoReady && pageReady) {
+            gsap.to(loader, {
+                opacity: 0,
+                duration: 0.6,
+                onComplete: () => loader.remove()
+            });
+        }
+    }
 
-        gsap.to(loader, {
-            opacity: 0,
-            duration: 0.8,
-            onComplete: () => loader.remove()
-        });
+    pageReady = true;
 
+    video.addEventListener("loadeddata", function () {
+        videoReady = true;
+        hideLoader();
     });
 
+    setTimeout(() => {
+        videoReady = true;
+        hideLoader();
+    }, 2500); // 2.5 seconds max wait
+
 });
+
 
 
 function videoPlay() {
