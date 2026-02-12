@@ -1,15 +1,22 @@
-const lenis = new Lenis({
-    duration: 1.2,
-    smoothWheel: true,
-    smoothTouch: true
+window.addEventListener("load", function () {
+
+    const video = document.querySelector(".vid");
+    const loader = document.querySelector("#loader");
+
+    video.addEventListener("canplaythrough", function () {
+
+        document.body.style.visibility = "visible";
+
+        gsap.to(loader, {
+            opacity: 0,
+            duration: 0.8,
+            onComplete: () => loader.remove()
+        });
+
+    });
+
 });
 
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
 
 function videoPlay() {
 
@@ -17,16 +24,18 @@ function videoPlay() {
     const music = document.querySelector("#bgMusic");
     const overlay = document.querySelector("#clickOverlay");
 
+    document.body.classList.add("no-scroll");
 
-    lenis.stop();
     window.addEventListener("click", function () {
+
         gsap.to(overlay, {
             opacity: 0,
             duration: 0.6,
             onComplete: () => overlay.remove()
         });
+
         video.play();
-        music.play();   
+        music.play();
 
     }, { once: true });
 
@@ -37,7 +46,7 @@ function videoPlay() {
             duration: 1,
             ease: "expo.inOut",
             onComplete: () => {
-                lenis.start();
+                document.body.classList.remove("no-scroll");
             }
         });
 
