@@ -1,0 +1,488 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Rindeya';
+  src: url('./rindeya/Rindeya.ttf') format('truetype');
+} 
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(120px) scale(0.3);
+    }
+}
+
+#letter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.668);
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+#letter .vid{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 10;
+}
+
+
+#letter #letterText{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+#letterText h4{
+    margin: 16px 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 450;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+#letterText .mainname{
+    font-size: 30px;
+    font-family: 'Rindeya', cursive;
+    text-shadow: 2px 2px 6px #ffffff99;
+
+}
+
+#letter img{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: blur(3px);
+    /* border: 2px solid black; */
+
+}
+
+#MainContent {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+#MainContent img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#family {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(57, 107, 26, 0.5);
+    padding: 4vw ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#family .familyname,
+#family .familytext {
+    font-family: "Montserrat";
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+#family .familyname {
+    font-size: 3rem;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 0 5px 25px rgba(255,255,255,0.4);
+}
+
+#family .familytext {
+    font-size: 1rem;
+    color: #e6e6e6;
+    margin-bottom: 40px;
+    letter-spacing: 4px;
+}
+
+#parents {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 5vw;
+}
+
+#parents #girl-parent,
+#parents #boy-parent {
+
+    padding: 1.5rem 1.5rem;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.25),
+        inset 0 0 30px rgba(255,255,255,0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    transition: all 0.4s ease;
+}
+
+#parents #girl-parent:hover,
+#parents #boy-parent:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.35),
+        0 0 40px rgba(255,255,255,0.2);
+}
+
+.diff {
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+}
+
+.names {
+    font-family: "Great Vibes", cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #ffffff;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+#cardsMain{
+    display: flex;
+    flex-direction: row;
+}
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;  
+
+    width: 40%;
+    max-width: 900px;
+    margin: 2rem auto;
+
+    padding: 1rem 2rem;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.25),
+        inset 0 0 30px rgba(255,255,255,0.1);
+
+    transition: all 0.4s ease;
+}
+
+.cards:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.35),
+        0 0 40px rgba(255,255,255,0.2);
+}
+
+.cards h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.cards h4 {
+    font-family: "Montserrat", sans-serif;
+    font-size: .8rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #e6e6e6;
+    margin: 0;
+}
+
+#venue {
+    width: 100%;
+    height: 40vh;
+}
+
+/* Make entire section clickable */
+.venue-link {
+    position: relative;
+    display: block;
+    height: 100%;
+    text-decoration: none;
+}
+
+/* Background image instead of map */
+.venue-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: url("/map.png") center/cover no-repeat;
+
+    filter: grayscale(40%) brightness(90%) contrast(85%);
+    opacity: 0.7;
+}
+
+/* Overlay */
+.venue-overlay {
+    position: relative;
+    z-index: 2;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    background: rgba(167, 189, 134, 0.35);
+    backdrop-filter: blur(3px);
+
+    text-align: center;
+}
+
+.venue-overlay i {
+    font-size: 3.5rem;
+    color: #5c6d3b;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+.venue-overlay h2 {
+    font-family: "Montserrat";
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    color: #4a5a2f;
+}
+
+.venue-overlay p {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6d7f4f;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.click-text {
+    margin-top: 1rem;
+    padding: 8px 20px;
+    font-family: "Montserrat";
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 30px;
+
+    color: #ffffff;
+
+    backdrop-filter: blur(5px);
+
+    transition: all 0.3s ease;
+}
+.venue-link:hover .click-text {
+    background: #ffffff;
+    color: #4a5a2f;
+    transform: scale(1.05);
+}
+
+.venue-link:hover::before {
+    filter: grayscale(0%) brightness(100%);
+    opacity: 0.8;
+}
+
+
+#functions {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#functions-bg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#functionsContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(57, 107, 26, 0.279);
+    padding: 4vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.functions-title {
+    font-family: "Montserrat";
+    font-size: 3rem;
+    color: #ffffff;
+    margin-top: 40px;
+    text-shadow: 0 5px 25px rgba(255,255,255,0.4);
+}
+
+.functions-subtitle {
+    font-family: "Montserrat";
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: #e6e6e6;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.functions-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.function-card {
+    width: 280px;
+    padding: 2rem;
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.25),
+        inset 0 0 30px rgba(255,255,255,0.1);
+
+    text-align: center;
+
+    transition: all 0.4s ease;
+}
+
+.function-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.35),
+        0 0 40px rgba(255,255,255,0.2);
+}
+
+.function-card h2 {
+    font-family: "Great Vibes", cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.function-card p {
+    font-family: "Montserrat";
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #e6e6e6;
+    margin-top: 10px;
+}
+
+.venue-overlay h6{
+    color: white;
+    font-family: "Montserrat";
+    font-weight: 400;
+    opacity: 0.4;
+    text-align: right;
+    text-transform: uppercase;
+    position: absolute;
+    font-size: 12px;
+    bottom: 0;
+    right: 0;
+}
+
+#clickOverlay {
+    width: 100%;
+    height: 10vh;
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    cursor: pointer;
+}
+
+#clickOverlay h3 {
+    font-family: "Montserrat";
+    transform: translateY(55vw);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 300;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%,100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
