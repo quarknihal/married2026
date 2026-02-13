@@ -26,7 +26,7 @@ window.addEventListener("load", function () {
     setTimeout(() => {
         videoReady = true;
         hideLoader();
-    }, 2500); // 2.5 seconds max wait
+    }, 4000); // 4 seconds max wait
 
 });
 
