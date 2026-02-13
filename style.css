@@ -56,13 +56,13 @@ html, body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100svh;
     background-color: rgba(0, 0, 0, 0.668);
 }
 
 .no-scroll {
     overflow: hidden;
-    height: 100vh;
+    min-height: 100svh;
 }
 
 
@@ -71,7 +71,7 @@ html, body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 100svh;
     object-fit: cover;
     z-index: 10;
 }
@@ -104,7 +104,7 @@ html, body {
 
 #letter img{
     position: relative;
-    height: 100vh;
+    min-height: 100svh;
     width: 100%;
     object-fit: cover;
     z-index: -1;
@@ -116,7 +116,7 @@ html, body {
 #MainContent {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100svh;
 }
 
 #MainContent img {
@@ -218,10 +218,17 @@ html, body {
     color: #ffffff;
     text-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
-#cardsMain{
+#cardsMain {
     display: flex;
-    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
+
+.cards {
+    width: 90%;
+}
+
 .cards {
     display: flex;
     flex-direction: column;
@@ -275,7 +282,7 @@ html, body {
 
 #venue {
     width: 100%;
-    height: 40vh;
+    min-height: 40svh;
 }
 
 /* Make entire section clickable */
@@ -375,7 +382,7 @@ html, body {
 #functions {
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100svh;
     overflow: hidden;
 }
 
@@ -482,31 +489,67 @@ html, body {
 }
 
 #clickOverlay {
-    width: 100%;
-    height: 10vh;
     position: absolute;
     inset: 0;
     z-index: 20;
 
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: flex-end;
+
+    padding-bottom: 8vh;
     cursor: pointer;
 }
 
 #clickOverlay h3 {
-    font-family: "Montserrat";
-    transform: translateY(55vw);
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #000;
-    font-weight: 500;
-    animation: pulse 1.5s ease-in-out infinite;
+    color: #fff;
 }
 
 @keyframes pulse {
     0%,100% { opacity: 0.6; }
     50% { opacity: 1; }
 }
+
+
+@media (max-width: 768px) {
+
+    .functions-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .functions-container {
+        gap: 1rem;
+    }
+
+    .function-card {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .function-card h2 {
+        font-size: 1.7rem;
+    }
+
+    #family .familyname {
+        font-size: 2rem;
+    }
+
+    .names {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #parents #girl-parent,
+    #parents #boy-parent,
+    .cards,
+    .function-card,
+    .venue-overlay {
+        backdrop-filter: none;
+        background: rgba(255,255,255,0.15);
+    }
+}
+
