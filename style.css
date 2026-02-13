@@ -504,7 +504,10 @@ html, body {
 #clickOverlay h3 {
     font-size: 0.9rem;
     letter-spacing: 2px;
-    color: #fff;
+    color: #000;
+    font-weight: 400;
+    font-family: "Montserrat";
+
 }
 
 @keyframes pulse {
