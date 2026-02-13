@@ -282,7 +282,7 @@ html, body {
 
 #venue {
     width: 100%;
-    min-height: 40svh;
+    height: 40vh;
 }
 
 /* Make entire section clickable */
