@@ -16,16 +16,20 @@
     <link rel="stylesheet" href="style.css">
     <title>Wedding Invitation</title>
 </head>
+
 <body>
     <div id="loader">
         <h2>Loading...</h2>
     </div>
-    <audio id="bgMusic" src="song.mp3" loop></audio>
+
+    <audio id="bgMusic" src="song.mp3" loop preload="auto"></audio>
+
     <div id="main">
 
         <div id="letter">
             <video 
                 muted playsinline
+                webkit-playsinline
                 class="vid" 
                 src="main3.mp4" 
                 type="video/mp4" 

@@ -48,9 +48,14 @@ function videoPlay() {
             onComplete: () => overlay.remove()
         });
 
-        video.play();
-        music.play();
+        video.currentTime = 0;
+music.currentTime = 0;
 
+        video.play().then(() => {
+            music.play();
+            }).catch(err => {
+                console.log("Video play blocked:", err);
+            });
     }, { once: true });
 
     video.addEventListener("ended", function () {
