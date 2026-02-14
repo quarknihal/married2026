@@ -25,11 +25,8 @@ window.addEventListener("load", function () {
         music.currentTime = 0;
 
         // start video first, then music
-        video.play().then(() => {
-            music.play().catch(()=>{});
-        }).catch(() => {
-            console.log("Autoplay blocked on this device.");
-        });
+        video.play();
+        music.play();
     }
 
     // when video is ready enough
