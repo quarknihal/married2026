@@ -4,33 +4,35 @@ window.addEventListener("load", function () {
     const loader = document.querySelector("#loader");
 
     let videoReady = false;
-    let pageReady = false;
 
-    function hideLoader() {
-        if (videoReady && pageReady) {
-            gsap.to(loader, {
-                opacity: 0,
-                duration: 0.6,
-                onComplete: () => loader.remove()
-            });
-        }
+    function startIntro() {
+
+        // fade loader out
+        gsap.to(loader, {
+            opacity: 0,
+            duration: 0.6,
+            onComplete: () => loader.remove()
+        });
+
+        // autoplay video AFTER loader disappears
+        video.currentTime = 0;
+        video.play().catch(() => {
+            console.log("Autoplay blocked, waiting for tap.");
+        });
     }
 
-    pageReady = true;
-
+    // video loaded enough to start
     video.addEventListener("loadeddata", function () {
         videoReady = true;
-        hideLoader();
+        startIntro();
     });
 
+    // fallback so loader never hangs
     setTimeout(() => {
-        videoReady = true;
-        hideLoader();
-    }, 4000); // 4 seconds max wait
+        if (!videoReady) startIntro();
+    }, 3500);
 
 });
-
-
 
 function videoPlay() {
 
@@ -48,14 +50,10 @@ function videoPlay() {
             onComplete: () => overlay.remove()
         });
 
-        video.currentTime = 0;
-music.currentTime = 0;
+        // start music on first user interaction (required on iOS)
+        music.currentTime = 0;
+        music.play().catch(()=>{});
 
-        video.play().then(() => {
-            music.play();
-            }).catch(err => {
-                console.log("Video play blocked:", err);
-            });
     }, { once: true });
 
     video.addEventListener("ended", function () {
