@@ -18,9 +18,21 @@
 </head>
 
 <body>
-    <div id="loader">
-        <h2>Loading...</h2>
-    </div>
+   <div id="loader">
+    <svg class="heart-loader" viewBox="0 0 200 180">
+        <path 
+            id="heartPath"
+            d="M100 165
+               C 30 120, 0 80, 0 50
+               C 0 20, 25 0, 50 0
+               C 75 0, 100 20, 100 40
+               C 100 20, 125 0, 150 0
+               C 175 0, 200 20, 200 50
+               C 200 80, 170 120, 100 165
+               Z"
+        />
+    </svg>
+</div>
 
     <audio id="bgMusic" src="song.mp3" loop preload="auto"></audio>
 
@@ -37,10 +49,6 @@
             </video>
             
             <img src="together.jpeg" alt="">
-            
-            <div id="clickOverlay">
-                <h3>Click Anywhere</h3>
-            </div>
 
             <div id="letterText">
                 <h4>Save the date</h4>

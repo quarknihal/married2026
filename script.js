@@ -1,61 +1,44 @@
 window.addEventListener("load", function () {
 
     const video = document.querySelector(".vid");
+    const music = document.querySelector("#bgMusic");
     const loader = document.querySelector("#loader");
 
-    let videoReady = false;
+    // lock scroll immediately
+    document.body.classList.add("no-scroll");
+
+    let started = false;
 
     function startIntro() {
+        if (started) return;
+        started = true;
 
         // fade loader out
         gsap.to(loader, {
             opacity: 0,
-            duration: 0.6,
+            duration: 0.2,
             onComplete: () => loader.remove()
         });
 
-        // autoplay video AFTER loader disappears
+        // reset both
         video.currentTime = 0;
-        video.play().catch(() => {
-            console.log("Autoplay blocked, waiting for tap.");
+        music.currentTime = 0;
+
+        // start video first, then music
+        video.play().then(() => {
+            music.play().catch(()=>{});
+        }).catch(() => {
+            console.log("Autoplay blocked on this device.");
         });
     }
 
-    // video loaded enough to start
-    video.addEventListener("loadeddata", function () {
-        videoReady = true;
-        startIntro();
-    });
+    // when video is ready enough
+    video.addEventListener("loadeddata", startIntro);
 
     // fallback so loader never hangs
-    setTimeout(() => {
-        if (!videoReady) startIntro();
-    }, 3500);
+    setTimeout(startIntro, 3500);
 
-});
-
-function videoPlay() {
-
-    const video = document.querySelector(".vid");
-    const music = document.querySelector("#bgMusic");
-    const overlay = document.querySelector("#clickOverlay");
-
-    document.body.classList.add("no-scroll");
-
-    window.addEventListener("click", function () {
-
-        gsap.to(overlay, {
-            opacity: 0,
-            duration: 0.6,
-            onComplete: () => overlay.remove()
-        });
-
-        // start music on first user interaction (required on iOS)
-        music.currentTime = 0;
-        music.play().catch(()=>{});
-
-    }, { once: true });
-
+    // unlock scroll when video ends
     video.addEventListener("ended", function () {
 
         gsap.to(video, {
@@ -69,6 +52,4 @@ function videoPlay() {
 
     });
 
-}
-
-videoPlay();
+});
